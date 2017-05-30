@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     Game.cpp \
     Square.cpp \
-    SquareBoard.cpp
+    SquareBoard.cpp \
+    Button.cpp
 
 HEADERS  += \
     Game.h \
     Square.h \
-    SquareBoard.h
+    SquareBoard.h \
+    Button.h
 
 FORMS    +=

@@ -3,8 +3,8 @@
 #include "SquareBoard.h"
 #include<QGraphicsScene>
 #include<QGraphicsView>
-
 class Game: public QGraphicsView{
+    Q_OBJECT
 public:
     //konstruktori
     Game(QWidget *parent = NULL);
@@ -15,7 +15,10 @@ public:
     //QString whosTurn;
 
     //javne metode
+    void displayMainMenu();
+public slots:
     void start();
+    void back();
 };
 
 #endif // GAME_H
