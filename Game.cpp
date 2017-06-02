@@ -2,6 +2,7 @@
 #include "SquareBoard.h"
 #include "Button.h"
 #include <QBrush>
+#include <QtGui>
 #include <QGraphicsTextItem>
 
 extern Game* game;
@@ -23,9 +24,14 @@ void Game::back(){
     game->displayMainMenu();
 }
 
+void Game::swap(){
+    //squareBoard->swapSquares();
+}
+
 void Game::start(){
     // clear the screen
     scene->clear();
+    //qInfo() << "Custom item clicked.";
 
     // test code TODO remove
     squareBoard = new SquareBoard();
@@ -41,6 +47,14 @@ void Game::start(){
     backButton->setPos(bxPos,byPos);
     connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
     scene->addItem(backButton);
+
+    Button* buttonSwap = new Button(QString("swap"));
+    buttonSwap->redColor();
+    bxPos = 100;
+    byPos = 10;
+    buttonSwap->setPos(bxPos,byPos);
+    connect(buttonSwap,SIGNAL(clicked()),this,SLOT(swap()));
+    scene->addItem(buttonSwap);
 }
 
 void Game::displayMainMenu(){

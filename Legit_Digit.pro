@@ -27,12 +27,14 @@ SOURCES += main.cpp \
     Game.cpp \
     Square.cpp \
     SquareBoard.cpp \
-    Button.cpp
+    Button.cpp \
+    SquaresList.cpp
 
 HEADERS  += \
     Game.h \
     Square.h \
     SquareBoard.h \
-    Button.h
+    Button.h \
+    SquaresList.h
 
 FORMS    +=

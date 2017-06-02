@@ -19,6 +19,7 @@ public:
 public slots:
     void start();
     void back();
+    void swap();
 };
 
 #endif // GAME_H

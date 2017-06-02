@@ -3,6 +3,8 @@
 
 #include <QList>
 #include "Square.h"
+#include "SquaresList.h"
+
 
 
 class SquareBoard{
@@ -11,16 +13,19 @@ public:
     SquareBoard();
 
     //geteri i seteri
-    QList<Square *> getSquares();
-    void setSquares(QList<Square*> squares);
+    //QList<Square *> getSquares();
+    //void setSquares(QList<Square*> squares);
 
     //metodi
     void placeSquares(int x, int y, int cols, int rows);
+    void setSquareNumInList();
+    //void swapSquares();
 private:
-    QList<Square*> squares;
+    //QList<Square*> squares;
 
     //privatan metod, treba nam samo za squareBoard
     void createSquareColumn(int x, int y, int numOfRows);
 };
+
 
 #endif // SQUAREBOARD_H
