@@ -26,6 +26,28 @@ Square::Square(QGraphicsItem *parent)//, SquareBoard *squareB)
     //pravimo poligon
     QPolygonF square(squarePoints);
     //crtamo poligon
+
+    int MAX_VALUE=6;
+        value = qrand() % MAX_VALUE;
+        if (value==0)//green
+                this->setGreenColor();
+        else if (value==1)//red
+                this->setRedColor();
+        else if (value==2)//blue
+                this->setBlueColor();
+        else if (value==3)//yellow
+                this->setYellowColor();
+        else if (value==4)//magenta
+                this->setMagentaColor();
+        else//cyan
+                this->setCyanColor();
+        //dodato
+        // draw the text
+        text = new QGraphicsTextItem(QString::number(value), this);
+        int xPos = 50 - text->boundingRect().width()/2;
+        int yPos = 50 - text->boundingRect().height()/2;
+        text->setPos(xPos,yPos);
+
     setPolygon(square);
 
 
@@ -48,7 +70,7 @@ void mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     qDebug() << "Custom item clicked.";
 }
-
+/*
 void Square::setValue(int val)
 {
     int MAX_VALUE=6;
@@ -66,6 +88,7 @@ void Square::setValue(int val)
     else//cyan
             this->setCyanColor();
 }
+*/
 int Square::getValue(){
     return value;
 }
@@ -76,16 +99,6 @@ int Square::getPosInList(){
 
 void Square::setPosInList(int pos){
     posInList = pos;
-}
-
-void Square::printValue(int x, int y){
-    QGraphicsTextItem * io = new QGraphicsTextItem;
-    io->setScale(2.0);
-    io->setPos(x,y);
-    QString stringVal = QString::number(value);
-    io->setPlainText(stringVal);
-    io->setOpacity(1);
-    game->scene->addItem(io);
 }
 
 void Square::setGreenColor(){
