@@ -4,6 +4,7 @@
 #include <QBrush>
 #include <QtGui>
 #include <QGraphicsTextItem>
+#include "SquaresList.h"
 
 extern Game* game;
 
@@ -20,13 +21,18 @@ Game::Game(QWidget *parent){
 }
 
 void Game::back(){
+//    for(int i=0; i<SquaresList::SquaresList.squares.length(); i++){
+//        SquaresList::SquaresList.squares.pop_back();
+//    }
+
+    SquaresList::squares.clear();
+        if(SquaresList::squares.isEmpty()){
+            qInfo() << "prazna lista";
+        }
     game->scene->clear();
     game->displayMainMenu();
 }
 
-void Game::swap(){
-    //squareBoard->swapSquares();
-}
 
 void Game::start(){
     // clear the screen
@@ -48,13 +54,6 @@ void Game::start(){
     connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
     scene->addItem(backButton);
 
-    Button* buttonSwap = new Button(QString("swap"));
-    buttonSwap->redColor();
-    bxPos = 100;
-    byPos = 10;
-    buttonSwap->setPos(bxPos,byPos);
-    connect(buttonSwap,SIGNAL(clicked()),this,SLOT(swap()));
-    scene->addItem(buttonSwap);
 }
 
 void Game::displayMainMenu(){

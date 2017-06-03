@@ -3,6 +3,8 @@
 #include "SquareBoard.h"
 #include<QGraphicsScene>
 #include<QGraphicsView>
+#include "SquaresList.h"
+
 class Game: public QGraphicsView{
     Q_OBJECT
 public:
@@ -19,7 +21,7 @@ public:
 public slots:
     void start();
     void back();
-    void swap();
+    //void swap();
 };
 
 #endif // GAME_H
