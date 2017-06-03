@@ -27,7 +27,7 @@ void SquareBoard::createSquareColumn(int x, int y, int numOfRows){
     //pravi kolonu kvadrata na odredjenoj pozociji sa odredjenim brojem redova
     for(size_t i=0,n=numOfRows; i<n; i++){
         Square* square = new Square();
-        square->setValue(10);
+       // square->setValue(10);
         //square->setPosInList(i+1);
         //square->printValue(x+yShift/3.2, y+yShift*i+yShift/3.8);
         square->setPos(x,y+yShift*i);//pomeramo na dole za 60 (60 je velicina kvadrata)
@@ -35,7 +35,7 @@ void SquareBoard::createSquareColumn(int x, int y, int numOfRows){
         //squares.append(square);
         SquaresList::squares.append(square);
         game->scene->addItem(square);
-        square->printValue(x+yShift/3.2, y+yShift*i+yShift/3.8);
+       // square->printValue(x+yShift/3.2, y+yShift*i+yShift/3.8);
     }
 }
 
