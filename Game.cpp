@@ -6,6 +6,8 @@
 #include <QtGui>
 #include <QGraphicsTextItem>
 #include "Score.h"
+#include "SquaresList.h"
+
 extern Game* game;
 Game::Game(QWidget *parent){
     // set up the screen
@@ -21,13 +23,20 @@ Game::Game(QWidget *parent){
 
 void Game::back(){
     SquaresList::squares.clear();
+
+//    for(int i=0; i<SquaresList::SquaresList.squares.length(); i++){
+//        SquaresList::SquaresList.squares.pop_back();
+//    }
+
+    SquaresList::squares.clear();
+        if(SquaresList::squares.isEmpty()){
+            qInfo() << "prazna lista";
+        }
+
     game->scene->clear();
     game->displayMainMenu();
 }
 
-void Game::swap(){
-    //squareBoard->swapSquares();
-}
 
 void Game::start(){
     // clear the screen
@@ -48,6 +57,7 @@ void Game::start(){
     backButton->setPos(bxPos,byPos);
     connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
     scene->addItem(backButton);
+
 
     Score *score = new Score();
     int txPos = this->width()/2-65;

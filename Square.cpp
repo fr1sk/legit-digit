@@ -160,53 +160,58 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     //dragHandler->onMouseMove(event);
     if(event->scenePos().x()>((this->pos().x()+50)+55)){
         qInfo() << "DRAG DESNO";
-        int inList = this->posInList;
-        int xTmp = this->pos().x();
-        int yTmp = this->pos().y();
-        this->setPos(this->pos().x()+110, this->pos().y());
+        if(this->posInList+5 < SquaresList::squares.length()){
+            int inList = this->posInList;
+            int xTmp = this->pos().x();
+            int yTmp = this->pos().y();
+            this->setPos(this->pos().x()+110, this->pos().y());
             SquaresList::squares[this->posInList+5]->setPos(xTmp, yTmp);
-        // setSquareNumInList();
+            // setSquareNumInList();
 
-        SquaresList::squares[this->posInList+5]->posInList = inList;
-        if(SquaresList::squares[this->posInList+5] != NULL)
-        std::swap(SquaresList::squares[this->posInList+5],SquaresList::squares[this->posInList]);
-        this->posInList = inList+5;
-
-
+            SquaresList::squares[this->posInList+5]->posInList = inList;
+            std::swap(SquaresList::squares[this->posInList+5],SquaresList::squares[this->posInList]);
+            this->posInList = inList+5;
+        }
 
 
     } if(event->scenePos().x()<((this->pos().x()+50)-55)){
         qInfo() << "DRAG LEVO";
-        int inList = this->posInList;
-        int xTmp = this->pos().x();
-        int yTmp = this->pos().y();
-        this->setPos(this->pos().x()-110, this->pos().y());
-        SquaresList::squares[this->posInList-5]->setPos(xTmp, yTmp);
-        // setSquareNumInList();
+        if(this->posInList-5 >= 0){
+            int inList = this->posInList;
+            int xTmp = this->pos().x();
+            int yTmp = this->pos().y();
+            this->setPos(this->pos().x()-110, this->pos().y());
+            SquaresList::squares[this->posInList-5]->setPos(xTmp, yTmp);
+            // setSquareNumInList();
 
-        SquaresList::squares[this->posInList-5]->posInList = inList;
-        std::swap(SquaresList::squares[this->posInList-5],SquaresList::squares[this->posInList]);
-        this->posInList = inList-5;
+            SquaresList::squares[this->posInList-5]->posInList = inList;
+            std::swap(SquaresList::squares[this->posInList-5],SquaresList::squares[this->posInList]);
+            this->posInList = inList-5;
+        }
 
 
 
     } if(event->scenePos().y()>((this->pos().y()+50)+55)){
         qInfo() << "DRAG DOLE";
-        int xTmp = this->pos().x();
-        int yTmp = this->pos().y();
-        this->setPos(this->pos().x(), this->pos().y()+110);
-        SquaresList::squares[this->posInList+1]->setPos(xTmp, yTmp);
-        std::swap(SquaresList::squares[this->posInList+1],SquaresList::squares[this->posInList]);
-        setSquareNumInList();
+        if((this->posInList+1)%5!=0){
+            int xTmp = this->pos().x();
+            int yTmp = this->pos().y();
+            this->setPos(this->pos().x(), this->pos().y()+110);
+            SquaresList::squares[this->posInList+1]->setPos(xTmp, yTmp);
+            std::swap(SquaresList::squares[this->posInList+1],SquaresList::squares[this->posInList]);
+            setSquareNumInList();
+        }
 
     } if(event->scenePos().y()<((this->pos().y()+50)-55)){
         qInfo() << "DRAG GORE";
-        int xTmp = this->pos().x();
-        int yTmp = this->pos().y();
-        this->setPos(this->pos().x(), this->pos().y()-110);
-        SquaresList::squares[this->posInList-1]->setPos(xTmp, yTmp);
-        std::swap(SquaresList::squares[this->posInList-1],SquaresList::squares[this->posInList]);
-        setSquareNumInList();
+        if(this->posInList%5!=0){
+            int xTmp = this->pos().x();
+            int yTmp = this->pos().y();
+            this->setPos(this->pos().x(), this->pos().y()-110);
+            SquaresList::squares[this->posInList-1]->setPos(xTmp, yTmp);
+            std::swap(SquaresList::squares[this->posInList-1],SquaresList::squares[this->posInList]);
+            setSquareNumInList();
+        }
     }
 
     //qInfo() << "Y misa: " << event->scenePos().y() << " Y objekta " << this->pos().y();
