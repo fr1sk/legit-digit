@@ -1,12 +1,12 @@
 #include "Game.h"
 #include "SquareBoard.h"
 #include "Button.h"
+#include "SquaresList.h"
 #include <QBrush>
 #include <QtGui>
 #include <QGraphicsTextItem>
-
+#include "Score.h"
 extern Game* game;
-
 Game::Game(QWidget *parent){
     // set up the screen
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -20,6 +20,7 @@ Game::Game(QWidget *parent){
 }
 
 void Game::back(){
+    SquaresList::squares.clear();
     game->scene->clear();
     game->displayMainMenu();
 }
@@ -48,13 +49,12 @@ void Game::start(){
     connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
     scene->addItem(backButton);
 
-    Button* buttonSwap = new Button(QString("swap"));
-    buttonSwap->redColor();
-    bxPos = 100;
-    byPos = 10;
-    buttonSwap->setPos(bxPos,byPos);
-    connect(buttonSwap,SIGNAL(clicked()),this,SLOT(swap()));
-    scene->addItem(buttonSwap);
+    Score *score = new Score();
+    int txPos = this->width()/2-65;
+    int tyPos = 10;
+    score->setPos(txPos, tyPos);
+    scene->addItem(score);
+
 }
 
 void Game::displayMainMenu(){

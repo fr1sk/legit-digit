@@ -164,10 +164,11 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         int xTmp = this->pos().x();
         int yTmp = this->pos().y();
         this->setPos(this->pos().x()+110, this->pos().y());
-        SquaresList::squares[this->posInList+5]->setPos(xTmp, yTmp);
+            SquaresList::squares[this->posInList+5]->setPos(xTmp, yTmp);
         // setSquareNumInList();
 
         SquaresList::squares[this->posInList+5]->posInList = inList;
+        if(SquaresList::squares[this->posInList+5] != NULL)
         std::swap(SquaresList::squares[this->posInList+5],SquaresList::squares[this->posInList]);
         this->posInList = inList+5;
 
