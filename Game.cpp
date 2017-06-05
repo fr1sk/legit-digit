@@ -1,13 +1,14 @@
 #include "Game.h"
 #include "SquareBoard.h"
 #include "Button.h"
+#include "SquaresList.h"
 #include <QBrush>
 #include <QtGui>
 #include <QGraphicsTextItem>
+#include "Score.h"
 #include "SquaresList.h"
 
 extern Game* game;
-
 Game::Game(QWidget *parent){
     // set up the screen
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -21,6 +22,8 @@ Game::Game(QWidget *parent){
 }
 
 void Game::back(){
+    SquaresList::squares.clear();
+
 //    for(int i=0; i<SquaresList::SquaresList.squares.length(); i++){
 //        SquaresList::SquaresList.squares.pop_back();
 //    }
@@ -29,6 +32,7 @@ void Game::back(){
         if(SquaresList::squares.isEmpty()){
             qInfo() << "prazna lista";
         }
+
     game->scene->clear();
     game->displayMainMenu();
 }
@@ -53,6 +57,13 @@ void Game::start(){
     backButton->setPos(bxPos,byPos);
     connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
     scene->addItem(backButton);
+
+
+    Score *score = new Score();
+    int txPos = this->width()/2-65;
+    int tyPos = 10;
+    score->setPos(txPos, tyPos);
+    scene->addItem(score);
 
 }
 
