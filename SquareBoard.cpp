@@ -20,6 +20,7 @@ void SquareBoard::placeSquares(int x, int y, int cols, int rows){
         createSquareColumn(x+xShift*i, y, rows);
     }
     setSquareNumInList();
+   // algCheck();
 }
 
 void SquareBoard::createSquareColumn(int x, int y, int numOfRows){
@@ -48,6 +49,8 @@ void SquareBoard::setSquareNumInList(){
             i++;
     }
 }
+
+
 
 //void SquareBoard::swapSquares(){
 //    Square* a = squares[1];

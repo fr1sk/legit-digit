@@ -19,6 +19,7 @@ public:
     //metodi
     void placeSquares(int x, int y, int cols, int rows);
     void setSquareNumInList();
+    //void algCheck();
     //void swapSquares();
 private:
     //QList<Square*> squares;

@@ -171,7 +171,9 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             SquaresList::squares[this->posInList+5]->posInList = inList;
             std::swap(SquaresList::squares[this->posInList+5],SquaresList::squares[this->posInList]);
             this->posInList = inList+5;
+            algCheck();
         }
+
 
 
     } if(event->scenePos().x()<((this->pos().x()+50)-55)){
@@ -187,7 +189,9 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             SquaresList::squares[this->posInList-5]->posInList = inList;
             std::swap(SquaresList::squares[this->posInList-5],SquaresList::squares[this->posInList]);
             this->posInList = inList-5;
+            algCheck();
         }
+
 
 
 
@@ -200,7 +204,9 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             SquaresList::squares[this->posInList+1]->setPos(xTmp, yTmp);
             std::swap(SquaresList::squares[this->posInList+1],SquaresList::squares[this->posInList]);
             setSquareNumInList();
+            algCheck();
         }
+
 
     } if(event->scenePos().y()<((this->pos().y()+50)-55)){
         qInfo() << "DRAG GORE";
@@ -211,7 +217,9 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             SquaresList::squares[this->posInList-1]->setPos(xTmp, yTmp);
             std::swap(SquaresList::squares[this->posInList-1],SquaresList::squares[this->posInList]);
             setSquareNumInList();
+            algCheck();
         }
+
     }
 
     //qInfo() << "Y misa: " << event->scenePos().y() << " Y objekta " << this->pos().y();
@@ -232,5 +240,53 @@ void Square::setSquareNumInList(){
     {
             (*j)->setPosInList(i);
             i++;
+    }
+}
+
+void Square::algCheck(){
+    qInfo() << "ALG CHECK CALLED";
+    int j, k, l;
+    int cnt = 0;
+    int array[35];
+    for(int i=0; i<SquaresList::squares.length(); i++){
+        //qInfo() << "vrednost na i: " << SquaresList::squares[i]->getValue() << " a i je: " << i;
+        j = i + 5;
+        k = i;
+        l = i % 5;
+        array[cnt++] = k;
+        while(j<=SquaresList::squares.length()-5+1+l && SquaresList::squares[j]->getValue() - SquaresList::squares[k]->getValue() == 1){
+            array[cnt++] = j;
+            j = j + 5;
+            k = k + 5;
+        }
+        if(j>SquaresList::squares.length()-5+1+l){
+            if(cnt>=3){
+                for(int z=0; z<cnt; z++){
+                    qInfo() << "PUCAJ" << array[z];
+                }
+                qInfo() << "=================";
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = - 1;
+            } else {
+               memset(array, -1, sizeof(array));
+               cnt = 0;
+            }
+        } else {
+            if(cnt>=3){
+                for(int z=0; z<cnt; z++){
+                    qInfo() << "PUCAJ" << array[z];
+                }
+                qInfo() << "=================";
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = - 1;
+
+            } else {
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = j-1;
+            }
+        }
     }
 }

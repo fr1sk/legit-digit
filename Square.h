@@ -21,6 +21,7 @@ public:
     void setMagentaColor();//4
     void setCyanColor();//5
     void setSquareNumInList();
+    void algCheck();
     //Square operator+(const Square& other);
 
     //SquareBoard sb;
