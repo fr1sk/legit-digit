@@ -18,10 +18,12 @@ public:
 
     //javne metode
     void displayMainMenu();
+
 public slots:
     void start();
     void back();
-    void hs();
+    void displayHighscores();
+    void insertHighscore(QString name, QString score);
     //void swap();
 };
 

@@ -18,6 +18,7 @@ public:
     void redColor();
     void blueColor();
     void greenColor();
+    void whiteColor();
 signals:
     void clicked();
 private:

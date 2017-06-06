@@ -63,3 +63,11 @@ void Button::greenColor(){
     setBrush(brush);
     setAcceptHoverEvents(false);
 }
+
+void Button::whiteColor(){
+    QBrush brush;
+    brush.setStyle(Qt::SolidPattern);
+    brush.setColor(Qt::white);
+    setBrush(brush);
+    setAcceptHoverEvents(false);
+}
