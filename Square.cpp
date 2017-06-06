@@ -261,6 +261,7 @@ void Square::algCheck(){
     int j, k, l;
     int cnt = 0;
     int array[35];
+//========================= horizontalno +1 ===============================
     for(int i=0; i<SquaresList::squares.length(); i++){
        //qInfo() << "vrednost na i: " << SquaresList::squares[i]->getValue() << " a i je: " << i;
         j = i + 5;
@@ -302,5 +303,150 @@ void Square::algCheck(){
             }
         }
     }
+
 }
+
+=======
+//========================= horizontalno -1 ===============================
+        memset(array, -1, sizeof(array));
+        cnt = 0;
+    for(int i=0; i<SquaresList::squares.length(); i++){
+        //qInfo() << "vrednost na i: " << SquaresList::squares[i]->getValue() << " a i je: " << i;
+        j = i + 5;
+        k = i;
+        l = i % 5;
+        array[cnt++] = k;
+        while(j<=SquaresList::squares.length()-5+1+l && SquaresList::squares[j]->getValue() - SquaresList::squares[k]->getValue() == -1){
+            array[cnt++] = j;
+            j = j + 5;
+            k = k + 5;
+        }
+        if(j>SquaresList::squares.length()-5+1+l){
+            if(cnt>=3){
+                for(int z=0; z<cnt; z++){
+                    qInfo() << "PUCAJ" << array[z];
+                }
+                qInfo() << "=================";
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = - 1;
+            } else {
+               memset(array, -1, sizeof(array));
+               cnt = 0;
+            }
+        } else {
+            if(cnt>=3){
+                for(int z=0; z<cnt; z++){
+                    qInfo() << "PUCAJ" << array[z];
+                }
+                qInfo() << "=================";
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = - 1;
+
+            } else {
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = j-1;
+            }
+        }
+    }
+//========================= vertikalno +1 ===============================
+    memset(array, -1, sizeof(array));
+    cnt = 0;
+    for (int i=0;i<SquaresList::squares.length();i++){
+        j=i+1;
+        k=i;
+        cnt = 0;
+        array[cnt++]=k;
+        while (j <= (i+5-(i%5)-1) && SquaresList::squares[j]->getValue() - SquaresList::squares[k]->getValue() == 1){
+            array[cnt++]=j;
+            j=j+1;
+            k=k+1;
+        }
+        if (j > (i+5-(i%5)-1)){ //dosli smo do dole do kraja
+            if (cnt >= 3){ //da li ima dovoljno za pucanje
+                //pucaju svi indeksi iz niza
+                //prazni se niz
+                for(int z=0; z<cnt; z++){
+                    qInfo() << "PUCAJ" << array[z];
+                }
+                qInfo() << "=================";
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = -1; krece iz pocekta, ili 0 ili -1, kada zaista puknu
+            }
+            else { //nema dovoljno u nizu a dosli do kraja, samo praznimo niz nista se ne desava
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+            }
+
+        } else { //razlika izmedju dva vise nije 1
+            if (cnt >= 3) {
+                //pucaju svi iz niza
+                //praznimo niz
+                for(int z=0; z<cnt; z++){
+                    qInfo() << "PUCAJ" << array[z];
+                }
+                qInfo() << "=================";
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = -1; kada zaista puknu
+            } else {
+                //praznimo niz
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+            }
+
+        }
+    }
+//========================= vertikalno -1 ===============================
+    memset(array, -1, sizeof(array));
+    cnt = 0;
+    for (int i=0;i<SquaresList::squares.length();i++){
+        j=i+1;
+        k=i;
+        cnt = 0;
+        array[cnt++]=k;
+        while (j <= (i+5-(i%5)-1) && SquaresList::squares[j]->getValue() - SquaresList::squares[k]->getValue() == -1){
+            array[cnt++]=j;
+            j=j+1;
+            k=k+1;
+        }
+        if (j > (i+5-(i%5)-1)){ //dosli smo do dole do kraja
+            if (cnt >= 3){ //da li ima dovoljno za pucanje
+                //pucaju svi indeksi iz niza
+                //prazni se niz
+                for(int z=0; z<cnt; z++){
+                    qInfo() << "PUCAJ" << array[z];
+                }
+                qInfo() << "=================";
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = -1; krece iz pocekta, ili 0 ili -1, kada zaista puknu
+            }
+            else { //nema dovoljno u nizu a dosli do kraja, samo praznimo niz nista se ne desava
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+            }
+
+        } else { //razlika izmedju dva vise nije 1
+            if (cnt >= 3) {
+                //pucaju svi iz niza
+                //praznimo niz
+                for(int z=0; z<cnt; z++){
+                    qInfo() << "PUCAJ" << array[z];
+                }
+                qInfo() << "=================";
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+                //i = -1; kada zaista puknu
+            } else {
+                //praznimo niz
+                memset(array, -1, sizeof(array));
+                cnt = 0;
+            }
+
+        }
+    }
 
