@@ -276,7 +276,30 @@ void Square::algCheck(){
         if(j>SquaresList::squares.length()-5+1+l){
             if(cnt>=3){
                 for(int z=0; z<cnt; z++){
-                    qInfo() << "PUCAJ" << array[z];
+                    qInfo() << "PUCAJ NESTAJ" << array[z];
+                    QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
+                    mEffect->setOpacity(1.0);
+                    SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
+                    QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
+                    anim->setDuration(1000);
+                    anim->setStartValue(1.0);
+                    anim->setEndValue(0.0);
+                    anim->start();
+                    //delete(this->text);
+                    game->scene->removeItem(SquaresList::squares[array[z]]->text);
+                    SquaresList::squares[array[z]]->setValue(qrand() % 6);
+
+                    QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(SquaresList::squares[array[z]]->getValue()), SquaresList::squares[array[z]]);
+                    SquaresList::squares[array[z]]->text = text;
+                    int xPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().width()/2;
+                    int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
+                    text->setPos(xPos,yPos);
+
+                    anim->setDuration(1000);
+                    anim->setStartValue(0.0);
+                    anim->setEndValue(1.0);
+                    anim->start();
+
                 }
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
@@ -289,7 +312,29 @@ void Square::algCheck(){
         } else {
             if(cnt>=3){
                 for(int z=0; z<cnt; z++){
-                    qInfo() << "PUCAJ" << array[z];
+                    qInfo() << "PUCAJ NESTAJ" << array[z];
+                    QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
+                    mEffect->setOpacity(1.0);
+                    SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
+                    QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
+                    anim->setDuration(1000);
+                    anim->setStartValue(1.0);
+                    anim->setEndValue(0.0);
+                    anim->start();
+                    //delete(this->text);
+                    game->scene->removeItem(SquaresList::squares[array[z]]->text);
+                    SquaresList::squares[array[z]]->setValue(qrand() % 6);
+
+                    QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(SquaresList::squares[array[z]]->getValue()), SquaresList::squares[array[z]]);
+                    SquaresList::squares[array[z]]->text = text;
+                    int xPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().width()/2;
+                    int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
+                    text->setPos(xPos,yPos);
+
+                    anim->setDuration(1000);
+                    anim->setStartValue(0.0);
+                    anim->setEndValue(1.0);
+                    anim->start();
                 }
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
@@ -324,6 +369,29 @@ void Square::algCheck(){
             if(cnt>=3){
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
+                    mEffect->setOpacity(1.0);
+                    SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
+                    QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
+                    anim->setDuration(1000);
+                    anim->setStartValue(1.0);
+                    anim->setEndValue(0.0);
+                    anim->start();
+                    //delete(this->text);
+                    game->scene->removeItem(SquaresList::squares[array[z]]->text);
+                    SquaresList::squares[array[z]]->setValue(qrand() % 6);
+
+                    QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(SquaresList::squares[array[z]]->getValue()), SquaresList::squares[array[z]]);
+                    SquaresList::squares[array[z]]->text = text;
+                    int xPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().width()/2;
+                    int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
+                    text->setPos(xPos,yPos);
+
+                    anim->setDuration(1000);
+                    anim->setStartValue(0.0);
+                    anim->setEndValue(1.0);
+                    anim->start();
+
                 }
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
@@ -337,6 +405,29 @@ void Square::algCheck(){
             if(cnt>=3){
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
+                    mEffect->setOpacity(1.0);
+                    SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
+                    QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
+                    anim->setDuration(1000);
+                    anim->setStartValue(1.0);
+                    anim->setEndValue(0.0);
+                    anim->start();
+                    //delete(this->text);
+                    game->scene->removeItem(SquaresList::squares[array[z]]->text);
+                    SquaresList::squares[array[z]]->setValue(qrand() % 6);
+
+                    QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(SquaresList::squares[array[z]]->getValue()), SquaresList::squares[array[z]]);
+                    SquaresList::squares[array[z]]->text = text;
+                    int xPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().width()/2;
+                    int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
+                    text->setPos(xPos,yPos);
+
+                    anim->setDuration(1000);
+                    anim->setStartValue(0.0);
+                    anim->setEndValue(1.0);
+                    anim->start();
+
                 }
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
@@ -369,6 +460,30 @@ void Square::algCheck(){
                 //prazni se niz
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
+                    mEffect->setOpacity(1.0);
+                    SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
+                    QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
+                    anim->setDuration(1000);
+                    anim->setStartValue(1.0);
+                    anim->setEndValue(0.0);
+                    anim->start();
+                    //delete(this->text);
+                    game->scene->removeItem(SquaresList::squares[array[z]]->text);
+                    SquaresList::squares[array[z]]->setValue(qrand() % 6);
+
+                    QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(SquaresList::squares[array[z]]->getValue()), SquaresList::squares[array[z]]);
+                    SquaresList::squares[array[z]]->text = text;
+                    int xPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().width()/2;
+                    int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
+                    text->setPos(xPos,yPos);
+
+                    anim->setDuration(1000);
+                    anim->setStartValue(0.0);
+                    anim->setEndValue(1.0);
+                    anim->start();
+
+
                 }
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
@@ -386,6 +501,30 @@ void Square::algCheck(){
                 //praznimo niz
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
+                    mEffect->setOpacity(1.0);
+                    SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
+                    QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
+                    anim->setDuration(1000);
+                    anim->setStartValue(1.0);
+                    anim->setEndValue(0.0);
+                    anim->start();
+                    //delete(this->text);
+                    game->scene->removeItem(SquaresList::squares[array[z]]->text);
+                    SquaresList::squares[array[z]]->setValue(qrand() % 6);
+
+                    QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(SquaresList::squares[array[z]]->getValue()), SquaresList::squares[array[z]]);
+                    SquaresList::squares[array[z]]->text = text;
+                    int xPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().width()/2;
+                    int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
+                    text->setPos(xPos,yPos);
+
+                    anim->setDuration(1000);
+                    anim->setStartValue(0.0);
+                    anim->setEndValue(1.0);
+                    anim->start();
+
+
                 }
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
@@ -418,6 +557,30 @@ void Square::algCheck(){
                 //prazni se niz
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
+                    mEffect->setOpacity(1.0);
+                    SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
+                    QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
+                    anim->setDuration(1000);
+                    anim->setStartValue(1.0);
+                    anim->setEndValue(0.0);
+                    anim->start();
+                    //delete(this->text);
+                    game->scene->removeItem(SquaresList::squares[array[z]]->text);
+                    SquaresList::squares[array[z]]->setValue(qrand() % 6);
+
+                    QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(SquaresList::squares[array[z]]->getValue()), SquaresList::squares[array[z]]);
+                    SquaresList::squares[array[z]]->text = text;
+                    int xPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().width()/2;
+                    int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
+                    text->setPos(xPos,yPos);
+
+                    anim->setDuration(1000);
+                    anim->setStartValue(0.0);
+                    anim->setEndValue(1.0);
+                    anim->start();
+
+
                 }
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
@@ -435,6 +598,30 @@ void Square::algCheck(){
                 //praznimo niz
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
+                    mEffect->setOpacity(1.0);
+                    SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
+                    QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
+                    anim->setDuration(1000);
+                    anim->setStartValue(1.0);
+                    anim->setEndValue(0.0);
+                    anim->start();
+                    //delete(this->text);
+                    game->scene->removeItem(SquaresList::squares[array[z]]->text);
+                    SquaresList::squares[array[z]]->setValue(qrand() % 6);
+
+                    QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(SquaresList::squares[array[z]]->getValue()), SquaresList::squares[array[z]]);
+                    SquaresList::squares[array[z]]->text = text;
+                    int xPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().width()/2;
+                    int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
+                    text->setPos(xPos,yPos);
+
+                    anim->setDuration(1000);
+                    anim->setStartValue(0.0);
+                    anim->setEndValue(1.0);
+                    anim->start();
+
+
                 }
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
@@ -449,4 +636,3 @@ void Square::algCheck(){
         }
     }
 }
-

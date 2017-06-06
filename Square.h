@@ -23,13 +23,14 @@ public:
     void setSquareNumInList();
     void algCheck();
     void hideThisWidget();
+    QGraphicsTextItem* text;
     //Square operator+(const Square& other);
 
     //SquareBoard sb;
 private:
     int value;
     int posInList;
-    QGraphicsTextItem* text;
+
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
