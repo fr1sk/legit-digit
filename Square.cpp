@@ -33,6 +33,8 @@ Square::Square(QGraphicsItem *parent)//, SquareBoard *squareB)
     //crtamo poligon
 
     int MAX_VALUE=6;
+        //QDateTime cd = QDateTime::currentDateTime();
+        //cd.toTime_t();
         value = qrand() % MAX_VALUE;
         if (value==0)//green
                 this->setGreenColor();
@@ -204,7 +206,7 @@ void Square::mousePressEvent(QGraphicsSceneMouseEvent *event)
     //qInfo() << "Value clicked bre: " << this->getValue() << " pos: " << this->pos().x()+50 << this->pos().y()+50;
     qInfo() << "pos in list: " << this->posInList << "pos in Qlist: ";
 //    anim = new QPropertyAnimation(mEffect, "opacity");
-//    anim->setDuration(1000);
+//    anim->setDuration(2000);
 //    anim->setStartValue(1.0);
 //    anim->setEndValue(0.0);
     //anim->setEasingCurve(QEasingCurve::OutCubic);
@@ -327,7 +329,7 @@ void Square::algCheck(){
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
                     QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(1.0);
                     anim->setEndValue(0.0);
                     anim->start();
@@ -341,7 +343,7 @@ void Square::algCheck(){
                     int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
                     text->setPos(xPos,yPos);
 
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(0.0);
                     anim->setEndValue(1.0);
                     anim->start();
@@ -363,7 +365,7 @@ void Square::algCheck(){
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
                     QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(1.0);
                     anim->setEndValue(0.0);
                     anim->start();
@@ -377,7 +379,7 @@ void Square::algCheck(){
                     int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
                     text->setPos(xPos,yPos);
 
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(0.0);
                     anim->setEndValue(1.0);
                     anim->start();
@@ -419,7 +421,7 @@ void Square::algCheck(){
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
                     QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(1.0);
                     anim->setEndValue(0.0);
                     anim->start();
@@ -433,7 +435,7 @@ void Square::algCheck(){
                     int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
                     text->setPos(xPos,yPos);
 
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(0.0);
                     anim->setEndValue(1.0);
                     anim->start();
@@ -455,7 +457,7 @@ void Square::algCheck(){
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
                     QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(1.0);
                     anim->setEndValue(0.0);
                     anim->start();
@@ -469,7 +471,7 @@ void Square::algCheck(){
                     int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
                     text->setPos(xPos,yPos);
 
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(0.0);
                     anim->setEndValue(1.0);
                     anim->start();
@@ -510,7 +512,7 @@ void Square::algCheck(){
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
                     QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(1.0);
                     anim->setEndValue(0.0);
                     anim->start();
@@ -524,7 +526,7 @@ void Square::algCheck(){
                     int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
                     text->setPos(xPos,yPos);
 
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(0.0);
                     anim->setEndValue(1.0);
                     anim->start();
@@ -551,7 +553,7 @@ void Square::algCheck(){
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
                     QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(1.0);
                     anim->setEndValue(0.0);
                     anim->start();
@@ -565,7 +567,7 @@ void Square::algCheck(){
                     int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
                     text->setPos(xPos,yPos);
 
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(0.0);
                     anim->setEndValue(1.0);
                     anim->start();
@@ -607,7 +609,7 @@ void Square::algCheck(){
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
                     QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(1.0);
                     anim->setEndValue(0.0);
                     anim->start();
@@ -621,7 +623,7 @@ void Square::algCheck(){
                     int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
                     text->setPos(xPos,yPos);
 
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(0.0);
                     anim->setEndValue(1.0);
                     anim->start();
@@ -648,7 +650,7 @@ void Square::algCheck(){
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
                     QPropertyAnimation *anim = new QPropertyAnimation(mEffect, "opacity");
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(1.0);
                     anim->setEndValue(0.0);
                     anim->start();
@@ -662,7 +664,7 @@ void Square::algCheck(){
                     int yPos = 50 - SquaresList::squares[array[z]]->text->boundingRect().height()/2;
                     text->setPos(xPos,yPos);
 
-                    anim->setDuration(1000);
+                    anim->setDuration(2000);
                     anim->setStartValue(0.0);
                     anim->setEndValue(1.0);
                     anim->start();
