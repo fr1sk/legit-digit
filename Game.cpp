@@ -76,7 +76,13 @@
           int i=1;
 
           QString val;
-          QFile file("../RS16-legit-digit/scores/proba.json");
+
+          //QFile file("../RS16-legit-digit/scores/proba.json");
+
+          QString dir = QDir::current().absolutePath();
+          qWarning() << dir;
+          QFile file("../../../../RS16-legit-digit/scores/proba.json");
+
       //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
           file.open(QIODevice::ReadOnly | QIODevice::Text);
           val = file.readAll();
@@ -85,6 +91,7 @@
           QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
           QJsonObject sett2 = d.object();
 
+
 //          for(kljuc:sett2.keys()){
 //            QJsonValue vrednost = sett2.value(QString(kljuc));
 //            qWarning() << kljuc << ":" << sett2[kljuc].toString().toInt();
@@ -92,10 +99,12 @@
 
          // qWarning() << sett2.keys().at(0);
 
+
           /*PLAYERS BEGIN*/
 
           QStringList keysList = sett2.keys();
           QStringList valueList;
+
 
 
           QStringList::iterator j = keysList.begin();
@@ -107,6 +116,7 @@
           }
           QStringList valueListCopy = valueList;
           qSort(valueListCopy.rbegin(), valueListCopy.rend());
+
 
           /*algoritam pocetak*/
           QStringList sortedKeys;
