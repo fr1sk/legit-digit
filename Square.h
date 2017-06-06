@@ -11,7 +11,7 @@ public:
     Square(QGraphicsItem* parent=NULL);//, SquareBoard* squareB);
 
     int getValue();
-    //void setValue(int val);
+    void setValue(int val);
     int getPosInList();
     void setPosInList(int pos);
     void setGreenColor();//0
@@ -24,12 +24,13 @@ public:
     void algCheck();
     void hideThisWidget();
     //Square operator+(const Square& other);
+    QGraphicsTextItem* text;
 
     //SquareBoard sb;
 private:
     int value;
     int posInList;
-    QGraphicsTextItem* text;
+
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);

@@ -71,7 +71,7 @@
           QString val;
           QString dir = QDir::current().absolutePath();
           qWarning() << dir;
-          QFile file("../RS16-legit-digit/scores/proba.json");
+          QFile file("../../../../RS16-legit-digit/scores/proba.json");
       //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
           file.open(QIODevice::ReadOnly | QIODevice::Text);
           val = file.readAll();
@@ -80,18 +80,18 @@
           QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
           QJsonObject sett2 = d.object();
 
-          sett2.keys().push_back("Aca");
-          sett2["aca"] = "100";
+          sett2.keys().push_back("Zika");
+          sett2["Zika"] = "200";
 
           QJsonDocument doc(sett2);
           QString strJson(doc.toJson(QJsonDocument::Compact));
 
           qWarning() << strJson;
 
-          for(kljuc:sett2.keys()){
-            QJsonValue vrednost = sett2.value(QString(kljuc));
-            qWarning() << kljuc << ":" << sett2[kljuc].toString().toInt();
-          }
+//          for(kljuc:sett2.keys()){
+//            QJsonValue vrednost = sett2.value(QString(kljuc));
+//            qWarning() << kljuc << ":" << sett2[kljuc].toString().toInt();
+//          }
 
           file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
           QTextStream stream(&file);
