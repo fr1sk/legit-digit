@@ -6,6 +6,7 @@
 #include "SquaresList.h"
 #include "Game.h"
 #include <algorithm>
+#include <QGraphicsOpacityEffect>
 
 extern Game *game;
 
@@ -63,12 +64,24 @@ Square::Square(QGraphicsItem *parent)//, SquareBoard *squareB)
 //    return *s;
 //}
 
-
+void Square::hideThisWidget(){
+    qInfo() << "hidden";
+}
 
 
 void mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     qDebug() << "Custom item clicked.";
+//    QGraphicsOpacityEffect *eff = new QGraphicsOpacityEffect(this);
+//    this->setGraphicsEffect(eff);
+//    QPropertyAnimation *a = new QPropertyAnimation(eff,"opacity");
+//    a->setDuration(350);
+//    a->setStartValue(1);
+//    a->setEndValue(0);
+//    a->setEasingCurve(QEasingCurve::OutBack);
+//    a->start(QPropertyAnimation::DeleteWhenStopped);
+//    connect(a,SIGNAL(finished()),this,SLOT(hideThisWidget()));
+
 }
 /*
 void Square::setValue(int val)
@@ -249,7 +262,7 @@ void Square::algCheck(){
     int cnt = 0;
     int array[35];
     for(int i=0; i<SquaresList::squares.length(); i++){
-        //qInfo() << "vrednost na i: " << SquaresList::squares[i]->getValue() << " a i je: " << i;
+       //qInfo() << "vrednost na i: " << SquaresList::squares[i]->getValue() << " a i je: " << i;
         j = i + 5;
         k = i;
         l = i % 5;
@@ -269,8 +282,8 @@ void Square::algCheck(){
                 cnt = 0;
                 //i = - 1;
             } else {
-               memset(array, -1, sizeof(array));
-               cnt = 0;
+                memset(array, -1, sizeof(array));
+                cnt = 0;
             }
         } else {
             if(cnt>=3){
@@ -290,3 +303,4 @@ void Square::algCheck(){
         }
     }
 }
+
