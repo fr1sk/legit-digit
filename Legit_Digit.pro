@@ -40,3 +40,6 @@ HEADERS  += \
     Score.h
 
 FORMS    +=
+
+DISTFILES += \
+    proba.json

@@ -21,6 +21,7 @@ public:
 public slots:
     void start();
     void back();
+    void hs();
     //void swap();
 };
 
