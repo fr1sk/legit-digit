@@ -23,6 +23,7 @@ public:
     void setSquareNumInList();
     void algCheck();
     void hideThisWidget();
+    QGraphicsTextItem* text;
     //Square operator+(const Square& other);
     QGraphicsTextItem* text;
 
