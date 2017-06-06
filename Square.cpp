@@ -304,9 +304,8 @@ void Square::algCheck(){
         }
     }
 
-}
 
-=======
+
 //========================= horizontalno -1 ===============================
         memset(array, -1, sizeof(array));
         cnt = 0;
@@ -449,4 +448,5 @@ void Square::algCheck(){
 
         }
     }
+}
 
