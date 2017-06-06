@@ -22,6 +22,7 @@ public:
     void setCyanColor();//5
     void setSquareNumInList();
     void algCheck();
+    void hideThisWidget();
     //Square operator+(const Square& other);
 
     //SquareBoard sb;
