@@ -29,7 +29,8 @@ SOURCES += main.cpp \
     SquareBoard.cpp \
     Button.cpp \
     SquaresList.cpp \
-    Score.cpp
+    Score.cpp \
+    Moves.cpp
 
 HEADERS  += \
     Game.h \
@@ -37,7 +38,8 @@ HEADERS  += \
     SquareBoard.h \
     Button.h \
     SquaresList.h \
-    Score.h
+    Score.h \
+    Moves.h
 
 FORMS    +=
 
