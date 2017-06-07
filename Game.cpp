@@ -7,6 +7,7 @@
     #include <QGraphicsTextItem>
     #include "Score.h"
     #include "SquaresList.h"
+    #include "Moves.h"
     #include <algorithm>
     extern Game* game;
     Game::Game(QWidget *parent){
@@ -65,12 +66,18 @@
         score->setPos(txPos, tyPos);
         scene->addItem(score);
 
+        Moves *moves = new Moves();
+        int movX = this->width()-245;
+        int movY = 10;
+        moves->setPos(movX, movY);
+        scene->addItem(moves);
+
     }
 
     void Game::displayHighscores(){
           scene->clear();
             /*LIST OF HIGHSCORES BEGIN*/
-          insertHighscore(QString("Milan"),QString("300"));
+          insertHighscore(QString("Zoran"),QString("800"));
 
           int mv=50;
           int i=1;
@@ -81,7 +88,9 @@
 
           QString dir = QDir::current().absolutePath();
           qWarning() << dir;
-          QFile file("../../../proba.json");
+
+          QFile file("rezultati.json");
+
 
       //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
           file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -316,7 +325,7 @@
 
     void Game::insertHighscore(QString name,QString score){
         QString val;
-        QFile file("../RS16-legit-digit/scores/proba.json");
+        QFile file("rezultati.json");
     //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         val = file.readAll();
