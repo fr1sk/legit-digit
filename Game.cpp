@@ -66,7 +66,7 @@
         score->setPos(txPos, tyPos);
         scene->addItem(score);
 
-        Moves *moves = new Moves();
+        moves = new Moves();
         int movX = this->width()-245;
         int movY = 10;
         moves->setPos(movX, movY);

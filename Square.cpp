@@ -214,6 +214,21 @@ void Square::mousePressEvent(QGraphicsSceneMouseEvent *event)
     //dragHandler = DragHandler::createDragHandler(event /* and other relevant stuff */);
 }
 
+
+void Square::moveAlgorithm(){
+    if(game->moves->getMoves()>1){
+        game->moves->setMoves();
+        game->scene->removeItem(game->moves->text);
+        game->moves->text = new QGraphicsTextItem(QString::number(game->moves->getMoves()), game->moves);
+        int xPos = 50 - game->moves->text->boundingRect().width()/2;
+        int yPos = 25 - game->moves->text->boundingRect().height()/2;
+        game->moves->text->setPos(xPos,yPos);
+    } else {
+        game->scene->clear();
+        qInfo() << "KRAJ BURAZ";
+    }
+}
+
 void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 
@@ -222,6 +237,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     if(event->scenePos().x()>((this->pos().x()+50)+55)){
         qInfo() << "DRAG DESNO";
         if(this->posInList+5 < SquaresList::squares.length()){
+            moveAlgorithm();
             int inList = this->posInList;
             int xTmp = this->pos().x();
             int yTmp = this->pos().y();
@@ -240,6 +256,8 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     } if(event->scenePos().x()<((this->pos().x()+50)-55)){
         qInfo() << "DRAG LEVO";
         if(this->posInList-5 >= 0){
+            moveAlgorithm();
+
             int inList = this->posInList;
             int xTmp = this->pos().x();
             int yTmp = this->pos().y();
@@ -259,6 +277,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     } if(event->scenePos().y()>((this->pos().y()+50)+55)){
         qInfo() << "DRAG DOLE";
         if((this->posInList+1)%5!=0){
+            moveAlgorithm();
             int xTmp = this->pos().x();
             int yTmp = this->pos().y();
             this->setPos(this->pos().x(), this->pos().y()+110);
@@ -272,6 +291,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     } if(event->scenePos().y()<((this->pos().y()+50)-55)){
         qInfo() << "DRAG GORE";
         if(this->posInList%5!=0){
+            moveAlgorithm();
             int xTmp = this->pos().x();
             int yTmp = this->pos().y();
             this->setPos(this->pos().x(), this->pos().y()-110);

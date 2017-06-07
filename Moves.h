@@ -8,9 +8,10 @@ public:
     Moves(QGraphicsItem* parent=NULL);
     void setMoves();
     int getMoves();
+    QGraphicsTextItem* text;
 private:
     int moves=25;
-    QGraphicsTextItem* text;
+
 };
 
 #endif // MOVES_H
