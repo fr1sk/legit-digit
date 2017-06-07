@@ -4,6 +4,7 @@
 #include<QGraphicsScene>
 #include<QGraphicsView>
 #include "SquaresList.h"
+#include "Score.h"
 
 class Game: public QGraphicsView{
     Q_OBJECT
@@ -18,6 +19,7 @@ public:
 
     //javne metode
     void displayMainMenu();
+    Score *score;
 
 public slots:
     void start();

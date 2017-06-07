@@ -59,7 +59,7 @@
         scene->addItem(backButton);
 
 
-        Score *score = new Score();
+        score = new Score();
         int txPos = this->width()/2-65;
         int tyPos = 10;
         score->setPos(txPos, tyPos);
@@ -81,7 +81,7 @@
 
           QString dir = QDir::current().absolutePath();
           qWarning() << dir;
-          QFile file("../../../../RS16-legit-digit/scores/proba.json");
+          QFile file("../../../proba.json");
 
       //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
           file.open(QIODevice::ReadOnly | QIODevice::Text);
