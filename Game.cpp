@@ -8,7 +8,12 @@
     #include "Score.h"
     #include "SquaresList.h"
     #include "Moves.h"
+    #include <QLineEdit>
+    #include <QTextEdit>
+#include<QVBoxLayout>
+#include<QPushButton>
     #include <algorithm>
+
     extern Game* game;
     Game::Game(QWidget *parent){
         // set up the screen
@@ -36,6 +41,29 @@
 
         game->scene->clear();
         game->displayMainMenu();
+    }
+
+    void Game::insertScore(){
+
+
+        QLayout * vbox = new QVBoxLayout();
+        QGraphicsView * view = new QGraphicsView();
+        QLineEdit *line = new QLineEdit();
+        line->setPlaceholderText("Unesite ime");
+        QPushButton *butt = new QPushButton();
+        butt->setFixedSize(100, 20);
+        butt->setText("Unesi");
+        vbox->addWidget(line);
+        vbox->addWidget(butt);
+
+        QWidget * w = new QWidget();
+        w->setLayout(vbox);
+        w->show();
+        //scene->addItem(line);
+
+
+
+
     }
 
 
@@ -71,6 +99,7 @@
         int movY = 10;
         moves->setPos(movX, movY);
         scene->addItem(moves);
+
 
     }
 
@@ -316,7 +345,8 @@
           int bxPos = this->width()/2 - 95;
           int byPos = 600;
           backButton->setPos(bxPos,byPos);
-          connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
+          connect(backButton,SIGNAL(clicked()),this,SLOT(insertScore()));
+          //connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
           scene->addItem(backButton);
 
     }
