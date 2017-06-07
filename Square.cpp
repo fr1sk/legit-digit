@@ -214,6 +214,21 @@ void Square::mousePressEvent(QGraphicsSceneMouseEvent *event)
     //dragHandler = DragHandler::createDragHandler(event /* and other relevant stuff */);
 }
 
+
+void Square::moveAlgorithm(){
+    if(game->moves->getMoves()>1){
+        game->moves->setMoves();
+        game->scene->removeItem(game->moves->text);
+        game->moves->text = new QGraphicsTextItem(QString::number(game->moves->getMoves()), game->moves);
+        int xPos = 50 - game->moves->text->boundingRect().width()/2;
+        int yPos = 25 - game->moves->text->boundingRect().height()/2;
+        game->moves->text->setPos(xPos,yPos);
+    } else {
+        game->scene->clear();
+        qInfo() << "KRAJ BURAZ";
+    }
+}
+
 void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 
@@ -222,6 +237,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     if(event->scenePos().x()>((this->pos().x()+50)+55)){
         qInfo() << "DRAG DESNO";
         if(this->posInList+5 < SquaresList::squares.length()){
+            moveAlgorithm();
             int inList = this->posInList;
             int xTmp = this->pos().x();
             int yTmp = this->pos().y();
@@ -240,6 +256,8 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     } if(event->scenePos().x()<((this->pos().x()+50)-55)){
         qInfo() << "DRAG LEVO";
         if(this->posInList-5 >= 0){
+            moveAlgorithm();
+
             int inList = this->posInList;
             int xTmp = this->pos().x();
             int yTmp = this->pos().y();
@@ -259,6 +277,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     } if(event->scenePos().y()>((this->pos().y()+50)+55)){
         qInfo() << "DRAG DOLE";
         if((this->posInList+1)%5!=0){
+            moveAlgorithm();
             int xTmp = this->pos().x();
             int yTmp = this->pos().y();
             this->setPos(this->pos().x(), this->pos().y()+110);
@@ -272,6 +291,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     } if(event->scenePos().y()<((this->pos().y()+50)-55)){
         qInfo() << "DRAG GORE";
         if(this->posInList%5!=0){
+            moveAlgorithm();
             int xTmp = this->pos().x();
             int yTmp = this->pos().y();
             this->setPos(this->pos().x(), this->pos().y()-110);
@@ -294,6 +314,8 @@ void Square::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 
+
+
 void Square::setSquareNumInList(){
     int i=0;
     qInfo() << "INIT POS: " << SquaresList::squares.size();
@@ -308,6 +330,8 @@ void Square::algCheck(){
     qInfo() << "ALG CHECK CALLED";
     int j, k, l;
     int cnt = 0;
+    int sum = game->score->getScore();
+    int sumTmp = 0;
     int array[35];
 //========================= horizontalno +1 ===============================
     for(int i=0; i<SquaresList::squares.length(); i++){
@@ -325,6 +349,10 @@ void Square::algCheck(){
             if(cnt>=3){
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ NESTAJ" << array[z];
+                    //====score========
+                     sumTmp += SquaresList::squares[array[z]]->getValue();
+
+                    //====end score====
                     QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
@@ -349,6 +377,16 @@ void Square::algCheck(){
                     anim->start();
 
                 }
+                sum += cnt*sumTmp;
+                sumTmp = 0;
+                game->score->setScore(sum);
+                game->scene->removeItem(game->score->text);
+                game->score->text = new QGraphicsTextItem(QString::number(game->score->getScore()), game->score);
+                int xPos = 50 - game->score->text->boundingRect().width()/2;
+                int yPos = 35 - game->score->text->boundingRect().height()/2;
+                game->score->text->setPos(xPos,yPos);
+
+                qInfo() << "score: " << game->score->getScore() << " sum: " <<sum;
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
                 cnt = 0;
@@ -361,6 +399,10 @@ void Square::algCheck(){
             if(cnt>=3){
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ NESTAJ" << array[z];
+                    //====score========
+                    sumTmp += SquaresList::squares[array[z]]->getValue();
+
+                    //====end score====
                     QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
@@ -384,6 +426,15 @@ void Square::algCheck(){
                     anim->setEndValue(1.0);
                     anim->start();
                 }
+                sum += cnt*sumTmp;
+                sumTmp = 0;
+                game->score->setScore(sum);
+                game->scene->removeItem(game->score->text);
+                game->score->text = new QGraphicsTextItem(QString::number(game->score->getScore()), game->score);
+                int xPos = 50 - game->score->text->boundingRect().width()/2;
+                int yPos = 35 - game->score->text->boundingRect().height()/2;
+                game->score->text->setPos(xPos,yPos);
+                qInfo() << "score: " << game->score->getScore() << " sum: " <<sum;
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
                 cnt = 0;
@@ -396,6 +447,7 @@ void Square::algCheck(){
             }
         }
     }
+
 
 
 
@@ -417,6 +469,11 @@ void Square::algCheck(){
             if(cnt>=3){
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    //====score========
+                     sumTmp += SquaresList::squares[array[z]]->getValue();
+
+                    //====end score====
+                    //setScore(array);
                     QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
@@ -440,7 +497,16 @@ void Square::algCheck(){
                     anim->setEndValue(1.0);
                     anim->start();
 
+
                 }
+                sum += cnt*sumTmp;
+                sumTmp = 0;
+                game->score->setScore(sum);
+                game->scene->removeItem(game->score->text);
+                game->score->text = new QGraphicsTextItem(QString::number(game->score->getScore()), game->score);
+                int xPos = 50 - game->score->text->boundingRect().width()/2;
+                int yPos = 35 - game->score->text->boundingRect().height()/2;
+                game->score->text->setPos(xPos,yPos);
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
                 cnt = 0;
@@ -453,6 +519,10 @@ void Square::algCheck(){
             if(cnt>=3){
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    //====score========
+                     sumTmp += SquaresList::squares[array[z]]->getValue();
+
+                    //====end score====
                     QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
@@ -477,6 +547,14 @@ void Square::algCheck(){
                     anim->start();
 
                 }
+                sum += cnt*sumTmp;
+                sumTmp = 0;
+                game->score->setScore(sum);
+                game->scene->removeItem(game->score->text);
+                game->score->text = new QGraphicsTextItem(QString::number(game->score->getScore()), game->score);
+                int xPos = 50 - game->score->text->boundingRect().width()/2;
+                int yPos = 35 - game->score->text->boundingRect().height()/2;
+                game->score->text->setPos(xPos,yPos);
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
                 cnt = 0;
@@ -508,6 +586,10 @@ void Square::algCheck(){
                 //prazni se niz
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    //====score========
+                     sumTmp += SquaresList::squares[array[z]]->getValue();
+
+                    //====end score====
                     QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
@@ -533,6 +615,14 @@ void Square::algCheck(){
 
 
                 }
+                sum += cnt*sumTmp;
+                sumTmp = 0;
+                game->score->setScore(sum);
+                game->scene->removeItem(game->score->text);
+                game->score->text = new QGraphicsTextItem(QString::number(game->score->getScore()), game->score);
+                int xPos = 50 - game->score->text->boundingRect().width()/2;
+                int yPos = 35 - game->score->text->boundingRect().height()/2;
+                game->score->text->setPos(xPos,yPos);
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
                 cnt = 0;
@@ -549,6 +639,10 @@ void Square::algCheck(){
                 //praznimo niz
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    //====score========
+                     sumTmp += SquaresList::squares[array[z]]->getValue();
+
+                    //====end score====
                     QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
@@ -574,6 +668,14 @@ void Square::algCheck(){
 
 
                 }
+                sum += cnt*sumTmp;
+                sumTmp = 0;
+                game->score->setScore(sum);
+                game->scene->removeItem(game->score->text);
+                game->score->text = new QGraphicsTextItem(QString::number(game->score->getScore()), game->score);
+                int xPos = 50 - game->score->text->boundingRect().width()/2;
+                int yPos = 35 - game->score->text->boundingRect().height()/2;
+                game->score->text->setPos(xPos,yPos);
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
                 cnt = 0;
@@ -605,6 +707,10 @@ void Square::algCheck(){
                 //prazni se niz
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    //====score========
+                     sumTmp += SquaresList::squares[array[z]]->getValue();
+
+                    //====end score====
                     QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
@@ -630,6 +736,14 @@ void Square::algCheck(){
 
 
                 }
+                sum += cnt*sumTmp;
+                sumTmp = 0;
+                game->score->setScore(sum);
+                game->scene->removeItem(game->score->text);
+                game->score->text = new QGraphicsTextItem(QString::number(game->score->getScore()), game->score);
+                int xPos = 50 - game->score->text->boundingRect().width()/2;
+                int yPos = 35 - game->score->text->boundingRect().height()/2;
+                game->score->text->setPos(xPos,yPos);
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
                 cnt = 0;
@@ -646,6 +760,10 @@ void Square::algCheck(){
                 //praznimo niz
                 for(int z=0; z<cnt; z++){
                     qInfo() << "PUCAJ" << array[z];
+                    //====score========
+                     sumTmp += SquaresList::squares[array[z]]->getValue();
+
+                    //====end score====
                     QGraphicsOpacityEffect *mEffect = new QGraphicsOpacityEffect();
                     mEffect->setOpacity(1.0);
                     SquaresList::squares[array[z]]->setGraphicsEffect(mEffect);
@@ -671,6 +789,14 @@ void Square::algCheck(){
 
 
                 }
+                sum += cnt*sumTmp;
+                sumTmp = 0;
+                game->score->setScore(sum);
+                game->scene->removeItem(game->score->text);
+                game->score->text = new QGraphicsTextItem(QString::number(game->score->getScore()), game->score);
+                int xPos = 50 - game->score->text->boundingRect().width()/2;
+                int yPos = 35 - game->score->text->boundingRect().height()/2;
+                game->score->text->setPos(xPos,yPos);
                 qInfo() << "=================";
                 memset(array, -1, sizeof(array));
                 cnt = 0;

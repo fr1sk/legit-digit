@@ -6,10 +6,12 @@ class Score: public QGraphicsPolygonItem{
 public:
     Score(QGraphicsItem* parent=NULL);
     void setScore(int sc);
-    void getScore();
-private:
-    int score=102010;
+    int getScore();
+    int score = 0;
     QGraphicsTextItem* text;
+private:
+
+
     QGraphicsTextItem* title;
 };
 

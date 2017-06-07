@@ -88,13 +88,13 @@
         scene->addItem(backButton);
 
 
-        Score *score = new Score();
+        score = new Score();
         int txPos = this->width()/2-65;
         int tyPos = 10;
         score->setPos(txPos, tyPos);
         scene->addItem(score);
 
-        Moves *moves = new Moves();
+        moves = new Moves();
         int movX = this->width()-245;
         int movY = 10;
         moves->setPos(movX, movY);
@@ -117,7 +117,9 @@
 
           QString dir = QDir::current().absolutePath();
           qWarning() << dir;
+
           QFile file("rezultati.json");
+
 
       //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
           file.open(QIODevice::ReadOnly | QIODevice::Text);

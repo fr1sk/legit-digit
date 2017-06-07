@@ -30,6 +30,7 @@ public:
 private:
     int value;
     int posInList;
+    void moveAlgorithm();
 
 
 protected:

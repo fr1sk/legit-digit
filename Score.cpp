@@ -29,3 +29,7 @@ Score::Score(QGraphicsItem *parent){
 void Score::setScore(int sc){
     score=sc;
 }
+
+int Score::getScore(){
+    return this->score;
+}

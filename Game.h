@@ -4,6 +4,8 @@
 #include<QGraphicsScene>
 #include<QGraphicsView>
 #include "SquaresList.h"
+#include "Score.h"
+#include "Moves.h"
 
 class Game: public QGraphicsView{
     Q_OBJECT
@@ -18,6 +20,8 @@ public:
 
     //javne metode
     void displayMainMenu();
+    Score *score;
+    Moves *moves;
 
 public slots:
     void start();
