@@ -28,6 +28,7 @@ public slots:
     void back();
     void displayHighscores();
     void insertHighscore(QString name, QString score);
+    void gameOver();
     //void swap();
 };
 

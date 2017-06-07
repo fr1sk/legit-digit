@@ -9,6 +9,9 @@
     #include "SquaresList.h"
     #include "Moves.h"
     #include <algorithm>
+    #include <QLabel>
+    #include <QLineEdit>
+    #include <QPushButton>
     extern Game* game;
     Game::Game(QWidget *parent){
         // set up the screen
@@ -77,7 +80,7 @@
     void Game::displayHighscores(){
           scene->clear();
             /*LIST OF HIGHSCORES BEGIN*/
-          insertHighscore(QString("Zoran"),QString("800"));
+          insertHighscore(QString("Padre"),QString("900"));
 
           int mv=50;
           int i=1;
@@ -89,7 +92,7 @@
           QString dir = QDir::current().absolutePath();
           qWarning() << dir;
 
-          QFile file("rezultati.json");
+          QFile file("../../../rezultati.json");
 
 
       //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
@@ -318,14 +321,14 @@
           int bxPos = this->width()/2 - 95;
           int byPos = 600;
           backButton->setPos(bxPos,byPos);
-          connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
+          connect(backButton,SIGNAL(clicked()),this,SLOT(gameOver()));
           scene->addItem(backButton);
 
     }
 
     void Game::insertHighscore(QString name,QString score){
         QString val;
-        QFile file("rezultati.json");
+        QFile file("../../../rezultati.json");
     //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         val = file.readAll();
@@ -351,6 +354,16 @@
         QTextStream stream(&file);
         stream << strJson;
         file.close();
+    }
+
+    void Game::gameOver()
+    {
+        scene->clear();
+        QLineEdit *edit = new QLineEdit("");
+        QPushButton *button = new QPushButton("&Download", this);
+        scene->addWidget(edit);
+
+
     }
 
     void Game::displayMainMenu(){
