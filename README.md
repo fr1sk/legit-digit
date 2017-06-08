@@ -8,7 +8,7 @@
 ```
 
 
-![alt text](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/logo.png)
+![alt text](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/logoSmall.png)
 
 
 ## DEMO:
