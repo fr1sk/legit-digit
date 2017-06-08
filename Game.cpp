@@ -105,6 +105,19 @@
         moves->setPos(movX, movY);
         scene->addItem(moves);
 
+        QFile fstInit("rezultati.json");
+
+        if(!fstInit.open(QIODevice::ReadOnly | QIODevice::Text)){
+            QFile initFile("rezultati.json");
+            initFile.open(QIODevice::WriteOnly | QIODevice::Text);
+            QTextStream stream(&initFile);
+            stream << "{\"Marko\":\"420\",\"Pink\":\"250\",\"Floyd\":\"265\",\"Filip\":\"225\",\"Milica\":\"205\",\"Dusan\":\"185\",\"Mikic\":\"110\",\"Mare\":\"130\",\"Masa\":\"195\",\"Pera\":\"150\",\"Jovan\":\"50\"}";
+            initFile.close();
+            fstInit.close();
+            }
+
+            fstInit.close();
+
 
     }
 
@@ -123,11 +136,21 @@
           QString dir = QDir::current().absolutePath();
           qWarning() << dir;
 
-          QFile file("../../../rezultati.json");
+          QFile file("rezultati.json");
 
 
       //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
+          if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+            QFile initFile("rezultati.json");
+            initFile.open(QIODevice::WriteOnly | QIODevice::Text);
+            QTextStream stream(&initFile);
+            stream << "{\"Marko\":\"420\",\"Pink\":\"250\",\"Floyd\":\"265\",\"Filip\":\"225\",\"Milica\":\"205\",\"Dusan\":\"185\",\"Mikic\":\"110\",\"Mare\":\"130\",\"Masa\":\"195\",\"Pera\":\"150\",\"Jovan\":\"50\"}";
+            initFile.close();
+            file.close();
+            }
+          file.close();
           file.open(QIODevice::ReadOnly | QIODevice::Text);
+
           val = file.readAll();
           file.close();
          //qWarning() << val;
@@ -365,7 +388,7 @@
     }
     void Game::insertHighscore(QString name,QString score){
         QString val;
-        QFile file("../../../rezultati.json");
+        QFile file("rezultati.json");
     //  file.setFileName("/home/milija/Documents/RS/Project/RS16-legit-digit/proba.json");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         val = file.readAll();
