@@ -6,5 +6,10 @@
 |_______ \/_______  /\______  /___| |____|    /_______  /___|\______  /___| |____|   
         \/        \/        \/                        \/            \/               
 ```
+
+
+![alt text](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/logo.png)
+
+
 ## DEMO:
 ![alt tag](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/Screen/SquareMovingDemo.gif)
