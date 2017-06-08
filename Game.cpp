@@ -30,8 +30,29 @@
         scene->setSceneRect(0,0,1024,768);
         QBrush brush(QColor(0x20, 0x50, 0x40, 255));
         scene->setBackgroundBrush(brush);
+        createWidget();
         setScene(scene);
     }
+
+    void Game::createWidget(){
+        scene->clear();
+        QLayout * vbox = new QVBoxLayout();
+        QGraphicsView * view = new QGraphicsView();
+        QLineEdit *line = new QLineEdit();
+
+        line->setPlaceholderText("ENTER NICKNAME");
+        QPushButton *butt = new QPushButton();
+        butt->setFixedSize(190, 25);
+        butt->setText("OK");
+        vbox->addWidget(line);
+        vbox->addWidget(butt);
+        w = new QWidget();
+        connect(butt, &QPushButton::clicked,
+                this, [=](){getValueOfArea(line->text());});
+        w->setLayout(vbox);
+
+    }
+
 
     void Game::back(){
         SquaresList::squares.clear();
@@ -45,33 +66,10 @@
                 qInfo() << "prazna lista";
             }
 
+
         game->scene->clear();
         game->displayMainMenu();
     }
-
-
-
-    void Game::insertScore(){
-        QLayout * vbox = new QVBoxLayout();
-        QGraphicsView * view = new QGraphicsView();
-        QLineEdit *line = new QLineEdit();
-
-        line->setPlaceholderText("Unesite ime");
-        QPushButton *butt = new QPushButton();
-        butt->setFixedSize(100, 20);
-        butt->setText("Unesi");
-        vbox->addWidget(line);
-        vbox->addWidget(butt);
-        QString string = line->text();
-
-
-        QWidget * w = new QWidget();
-        connect(butt, SIGNAL(clicked()), w, SLOT(getValueOfArea(string)));
-        w->setLayout(vbox);
-        w->show();
-        //scene->addItem(line);
-    }
-
 
     void Game::start(){
         // clear the screen
@@ -79,6 +77,7 @@
         //qInfo() << "Custom item clicked.";
 
         // test code TODO remove
+        isNotGameOver = true;
         squareBoard = new SquareBoard();
         squareBoard->placeSquares(120, 120, 7, 5);
 
@@ -356,9 +355,9 @@
 
           //connect(backButton,SIGNAL(clicked()),this,SLOT(gameOver()));
 
-         // connect(backButton,SIGNAL(clicked()),this,SLOT(insertScore()));
-          connect(backButton,SIGNAL(clicked()),this,SLOT(gameOver()));
-          //connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
+            // connect(backButton,SIGNAL(clicked()),this,SLOT(insertScore()));
+          //connect(backButton,SIGNAL(clicked()),this,SLOT(gameOver()));
+          connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
 
           scene->addItem(backButton);
 
@@ -395,7 +394,13 @@
     }
 
     void Game::getValueOfArea(QString string){
-        qWarning() << "VREDNOST POLJA: " << string;
+        //QString currScore(score->getScore());
+        QString s = QString::number(score->getScore());
+        qWarning() << "WRITE IN JSON: " << string << ":" << s;
+        scene->clear();
+        insertHighscore(string,s);
+        displayMainMenu();
+
     }
 
     void Game::gameOver()

@@ -13,6 +13,8 @@
 #include <QPushButton>
 #include <QTextEdit>
 #include <QVBoxLayout>
+#include <QFileDialog>
+#include <QGraphicsPixmapItem>
 
 extern Game *game;
 //QPropertyAnimation *animation;
@@ -210,10 +212,10 @@ void Square::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     //qInfo() << "Value clicked bre: " << this->getValue() << " pos: " << this->pos().x()+50 << this->pos().y()+50;
     qInfo() << "pos in list: " << this->posInList << "pos in Qlist: ";
-//    anim = new QPropertyAnimation(mEffect, "opacity");
-//    anim->setDuration(2000);
-//    anim->setStartValue(1.0);
-//    anim->setEndValue(0.0);
+    //    anim = new QPropertyAnimation(mEffect, "opacity");
+    //    anim->setDuration(2000);
+    //    anim->setStartValue(1.0);
+    //    anim->setEndValue(0.0);
     //anim->setEasingCurve(QEasingCurve::OutCubic);
     //anim->start();
     //dragHandler = DragHandler::createDragHandler(event /* and other relevant stuff */);
@@ -224,7 +226,7 @@ void Square::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void Square::moveAlgorithm(){
     if(game->moves->getMoves()>0){
-        game->moves->setMoves();
+
 
         game->scene->removeItem(game->moves->text);
         game->moves->text = new QGraphicsTextItem(QString::number(game->moves->getMoves()), game->moves);
@@ -232,21 +234,30 @@ void Square::moveAlgorithm(){
         int yPos = 25 - game->moves->text->boundingRect().height()/2;
         game->moves->text->setPos(xPos,yPos);
     } else {
-        //game->scene->clear();
-        //game->gameOver();
-
+        QString dir = QDir::current().absolutePath();
         qInfo() << "KRAJ BURAZ";
-//        game->displayMainMenu();
-//        game->gameOver();
+        gameOver();
+
     }
+    game->moves->setMoves();
 }
+
+void Square::gameOver()
+{
+    //game->scene->removeItem(game->squareBoard);
+    //game->scene->clear();
+    //SquaresList::squares.clear();
+    game->isNotGameOver = false;
+    game->w->show();
+}
+
 
 void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 
     //qInfo() << "X: " << event->scenePos().x() << " Y:" << event->scenePos().y();
     //dragHandler->onMouseMove(event);
-    if(event->scenePos().x()>((this->pos().x()+50)+55)){
+    if(game->isNotGameOver && event->scenePos().x()>((this->pos().x()+50)+55)){
         qInfo() << "DRAG DESNO";
         if(this->posInList+5 < SquaresList::squares.length()){
             moveAlgorithm();
@@ -265,7 +276,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 
 
-    } if(event->scenePos().x()<((this->pos().x()+50)-55)){
+    } if(game->isNotGameOver && event->scenePos().x()<((this->pos().x()+50)-55)){
         qInfo() << "DRAG LEVO";
         if(this->posInList-5 >= 0){
             moveAlgorithm();
@@ -286,7 +297,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 
 
-    } if(event->scenePos().y()>((this->pos().y()+50)+55)){
+    } if(game->isNotGameOver && event->scenePos().y()>((this->pos().y()+50)+55)){
         qInfo() << "DRAG DOLE";
         if((this->posInList+1)%5!=0){
             moveAlgorithm();
@@ -300,7 +311,7 @@ void Square::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         }
 
 
-    } if(event->scenePos().y()<((this->pos().y()+50)-55)){
+    } if(game->isNotGameOver && event->scenePos().y()<((this->pos().y()+50)-55)){
         qInfo() << "DRAG GORE";
         if(this->posInList%5!=0){
             moveAlgorithm();

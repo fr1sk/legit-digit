@@ -24,12 +24,14 @@ public:
     Score *score;
     Moves *moves;
     void getValueOfArea(QString string);
+    QWidget * w;
+    void createWidget();
+     bool isNotGameOver;
 
 
 public slots:
     void start();
     void back();
-    void insertScore();
     void displayHighscores();
     void insertHighscore(QString name, QString score);
     void gameOver();

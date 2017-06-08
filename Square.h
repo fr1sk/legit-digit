@@ -25,6 +25,7 @@ public:
     void hideThisWidget();
     void gameOver();
     QGraphicsTextItem* text;
+
     //Square operator+(const Square& other);
 
     //SquareBoard sb;

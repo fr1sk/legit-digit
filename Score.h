@@ -9,6 +9,7 @@ public:
     int getScore();
     int score = 0;
     QGraphicsTextItem* text;
+
 private:
 
 
