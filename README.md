@@ -1,5 +1,3 @@
-![alt text](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/logo.png)
-
 ```
 .____     ___________ ________.______________ ________  .___  ________.______________
 |    |    \_   _____//  _____/|   \__    ___/ \______ \ |   |/  _____/|   \__    ___/
@@ -8,5 +6,10 @@
 |_______ \/_______  /\______  /___| |____|    /_______  /___|\______  /___| |____|   
         \/        \/        \/                        \/            \/               
 ```
+
+
+![alt text](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/logo.png)
+
+
 ## DEMO:
 ![alt tag](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/Screen/SquareMovingDemo.gif)
