@@ -422,6 +422,7 @@
         qWarning() << "WRITE IN JSON: " << string << ":" << s;
         scene->clear();
         w->close();
+        SquaresList::squares.clear();
         insertHighscore(string,s);
         displayMainMenu();
 
@@ -452,30 +453,40 @@
         //QPushButton *button = new QPushButton("&Download", this);
         //scene->addWidget(w);
 
-
     }
+
 
     void Game::displayMainMenu(){
         // create the title text
         QGraphicsTextItem* titleText = new QGraphicsTextItem(QString("Legit Digit"));
+        //ui->picLabel->setPixmap(QPixmap::fromImage((*originalImage)
+        QLabel label;
+        QImage image("../../../logo.png");
+        QPixmap pixmap(QPixmap::fromImage((image)).scaled(width()-400, height()-400, Qt::KeepAspectRatio));
+        label.setPixmap(pixmap);
+        label.setMask(pixmap.mask());
+
         QFont titleFont("comic sans",50);
         titleText->setFont(titleFont);
-        int txPos = this->width()/2 - titleText->boundingRect().width()/2;
-        int tyPos = 150;
-        titleText->setPos(txPos,tyPos);
-        scene->addItem(titleText);
 
+        //titleText->setPos(txPos,tyPos);
+        //scene->addItem(titleText);
+
+        QGraphicsPixmapItem *pm = scene->addPixmap(pixmap);
+        int txPos = this->width()/2 - pm->boundingRect().width()/2;
+        pm->setPos(txPos,0);
+        label.show();
         // create the play button
         Button* playButton = new Button(QString("Play"));
         int bxPos = this->width()/2 - playButton->boundingRect().width()/2;
-        int byPos = 275;
+        int byPos = 400;
         playButton->setPos(bxPos,byPos);
         connect(playButton,SIGNAL(clicked()),this,SLOT(start()));
         scene->addItem(playButton);
 
         Button* highscoreButton = new Button(QString("Highscore"));
         int hxPos = this->width()/2 - highscoreButton->boundingRect().width()/2;
-        int hyPos = 350;
+        int hyPos = 475;
         highscoreButton->setPos(hxPos,hyPos);
         connect(highscoreButton,SIGNAL(clicked()),this,SLOT(displayHighscores()));
         scene->addItem(highscoreButton);
@@ -483,7 +494,7 @@
         // create the quit button
         Button* quitButton = new Button(QString("Quit"));
         int qxPos = this->width()/2 - quitButton->boundingRect().width()/2;
-        int qyPos = 425;
+        int qyPos = 550;
         quitButton->setPos(qxPos,qyPos);
         connect(quitButton,SIGNAL(clicked()),this,SLOT(close()));
         scene->addItem(quitButton);
