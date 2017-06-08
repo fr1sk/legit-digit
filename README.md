@@ -12,4 +12,4 @@
 
 
 ## DEMO:
-![alt tag](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/Screen/SquareMovingDemo.gif)
+![alt tag](https://raw.githubusercontent.com/MATF-RS17/RS16-legit-digit/master/Screen/demo2.gif)
