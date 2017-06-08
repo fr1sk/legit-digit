@@ -421,6 +421,7 @@
         QString s = QString::number(score->getScore());
         qWarning() << "WRITE IN JSON: " << string << ":" << s;
         scene->clear();
+        w->close();
         insertHighscore(string,s);
         displayMainMenu();
 
