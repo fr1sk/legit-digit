@@ -6,6 +6,7 @@
 #include "SquaresList.h"
 #include "Score.h"
 #include "Moves.h"
+#include <QString>
 
 class Game: public QGraphicsView{
     Q_OBJECT
@@ -22,6 +23,8 @@ public:
     void displayMainMenu();
     Score *score;
     Moves *moves;
+    void getValueOfArea(QString string);
+
 
 public slots:
     void start();
@@ -30,6 +33,7 @@ public slots:
     void displayHighscores();
     void insertHighscore(QString name, QString score);
     void gameOver();
+
     //void swap();
 };
 

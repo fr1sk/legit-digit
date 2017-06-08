@@ -8,6 +8,11 @@
 #include <algorithm>
 #include <QGraphicsOpacityEffect>
 #include <QPropertyAnimation>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QTextEdit>
+#include <QVBoxLayout>
 
 extern Game *game;
 //QPropertyAnimation *animation;
@@ -215,17 +220,24 @@ void Square::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 
+
+
 void Square::moveAlgorithm(){
-    if(game->moves->getMoves()>1){
+    if(game->moves->getMoves()>0){
         game->moves->setMoves();
+
         game->scene->removeItem(game->moves->text);
         game->moves->text = new QGraphicsTextItem(QString::number(game->moves->getMoves()), game->moves);
         int xPos = 50 - game->moves->text->boundingRect().width()/2;
         int yPos = 25 - game->moves->text->boundingRect().height()/2;
         game->moves->text->setPos(xPos,yPos);
     } else {
-        game->scene->clear();
+        //game->scene->clear();
+        //game->gameOver();
+
         qInfo() << "KRAJ BURAZ";
+//        game->displayMainMenu();
+//        game->gameOver();
     }
 }
 

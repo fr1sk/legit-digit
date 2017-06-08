@@ -10,10 +10,10 @@
     #include "Moves.h"
     #include <QLineEdit>
     #include <QTextEdit>
-#include<QVBoxLayout>
-#include<QPushButton>
+    #include<QVBoxLayout>
+    #include<QPushButton>
     #include <algorithm>
-
+    #include <QString>
     #include <QLabel>
     #include <QLineEdit>
     #include <QPushButton>
@@ -28,6 +28,8 @@
         // set up the scene
         scene = new QGraphicsScene();
         scene->setSceneRect(0,0,1024,768);
+        QBrush brush(QColor(0x20, 0x50, 0x40, 255));
+        scene->setBackgroundBrush(brush);
         setScene(scene);
     }
 
@@ -47,27 +49,27 @@
         game->displayMainMenu();
     }
 
+
+
     void Game::insertScore(){
-
-
         QLayout * vbox = new QVBoxLayout();
         QGraphicsView * view = new QGraphicsView();
         QLineEdit *line = new QLineEdit();
+
         line->setPlaceholderText("Unesite ime");
         QPushButton *butt = new QPushButton();
         butt->setFixedSize(100, 20);
         butt->setText("Unesi");
         vbox->addWidget(line);
         vbox->addWidget(butt);
+        QString string = line->text();
+
 
         QWidget * w = new QWidget();
+        connect(butt, SIGNAL(clicked()), w, SLOT(getValueOfArea(string)));
         w->setLayout(vbox);
         w->show();
         //scene->addItem(line);
-
-
-
-
     }
 
 
@@ -110,7 +112,7 @@
     void Game::displayHighscores(){
           scene->clear();
             /*LIST OF HIGHSCORES BEGIN*/
-          insertHighscore(QString("Padre"),QString("900"));
+          //insertHighscore(QString("Padre"),QString("900"));
 
           int mv=50;
           int i=1;
@@ -354,13 +356,14 @@
 
           //connect(backButton,SIGNAL(clicked()),this,SLOT(gameOver()));
 
-          connect(backButton,SIGNAL(clicked()),this,SLOT(insertScore()));
+         // connect(backButton,SIGNAL(clicked()),this,SLOT(insertScore()));
+          connect(backButton,SIGNAL(clicked()),this,SLOT(gameOver()));
           //connect(backButton,SIGNAL(clicked()),this,SLOT(back()));
 
           scene->addItem(backButton);
 
     
-
+    }
     void Game::insertHighscore(QString name,QString score){
         QString val;
         QFile file("../../../rezultati.json");
@@ -391,12 +394,34 @@
         file.close();
     }
 
+    void Game::getValueOfArea(QString string){
+        qWarning() << "VREDNOST POLJA: " << string;
+    }
+
     void Game::gameOver()
     {
         scene->clear();
-        QLineEdit *edit = new QLineEdit("");
-        QPushButton *button = new QPushButton("&Download", this);
-        scene->addWidget(edit);
+        QLayout * vbox = new QVBoxLayout();
+        QGraphicsView * view = new QGraphicsView();
+        QLineEdit *line = new QLineEdit();
+
+        line->setPlaceholderText("ENTER NICKNAME");
+        QPushButton *butt = new QPushButton();
+        butt->setFixedSize(190, 25);
+        butt->setText("OK");
+        vbox->addWidget(line);
+        vbox->addWidget(butt);
+
+        QWidget * w = new QWidget();
+        //QString str = line->text();
+        connect(butt, &QPushButton::clicked,
+                this, [=](){getValueOfArea(line->text());});
+        w->setLayout(vbox);
+        w->show();
+
+        //QLineEdit *edit = new QLineEdit("");
+        //QPushButton *button = new QPushButton("&Download", this);
+        //scene->addWidget(w);
 
 
     }
